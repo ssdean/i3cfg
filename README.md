@@ -42,8 +42,8 @@ EndSection' >> /usr/share/X11/xorg.conf.d/40-libinput.conf
 
 List of required and useful packages
 
-Package                | Description
-                    ---|---
+Package | Description
+--- | ---
 acpi                   | Client for battery, power, and thermal readings
 alsa-utils             | An alternative implementation of Linux sound support
 blueman                | GTK+ Bluetooth Manager
