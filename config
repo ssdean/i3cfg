@@ -1,0 +1,267 @@
+set $mod Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:Cantarell Regular 12
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+######################
+## DEFAULT PROGRAMS ##
+######################
+
+set $browser     firefox
+set $editor      code
+set $filemanager nautilus
+set $term        termite
+
+####################
+## POP UP WINDOWS ##
+####################
+
+# Pop up windows are started upon boot, see "START-UP PROGRAMS" below.
+
+# Dropdown terminal - $mod+u #
+for_window [instance="dropdown"] floating enable
+for_window [instance="dropdown"] resize set 750 550
+for_window [instance="dropdown"] move scratchpad
+for_window [instance="dropdown"] border pixel 3
+bindsym $mod+u [instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
+
+# Math teminal (python shell) - $mod+i #
+for_window [instance="math"] floating enable
+for_window [instance="math"] resize set 1000 500
+for_window [instance="math"] move scratchpad
+for_window [instance="math"] border pixel 3
+bindsym $mod+i [instance="math"] scratchpad show; [instance="math"] move position center
+
+##########################
+## PROGRAM KEY BINDINGS ##
+##########################
+
+# Browser
+bindsym $mod+b exec --no-startup-id $browser
+
+# Editor
+bindsym $mod+e exec --no-startup-id $editor
+
+# Dmenu
+bindsym $mod+d exec --no-startup-id dmenu_run -i -l 5 -fn 'Cantarell Regular:pixelsize=16' -nb '#000000' -nf '#575757' -sb '#000000' -sf '#ffffff'
+
+# File Manager
+bindsym $mod+Shift+Return exec --no-startup-id $filemanager
+
+# Ranger
+bindsym $mod+r exec --no-startup-id $term -e ranger
+
+# Restart
+bindsym $mod+Shift+Insert exec $(shutdown -r now)
+
+# Terminal
+bindsym $mod+Return exec --no-startup-id $term --name=Terminal
+
+# Screenshot
+bindsym $mod+Shift+s exec --no-startup-id maim --select ~/Pictures/Screenshots/$(date "+%d-%m-%Y_%T").png
+
+# Shutdown
+bindsym $mod+Shift+Delete exec $(shutdown -h now)
+
+# Virt-viewer
+bindsym $mod+m exec --no-startup-id virt-viewer
+
+# Randomly cycle wallpaper
+bindsym $mod+Shift+b exec --no-startup-id feh --randomize --bg-scale ~/Pictures/Wallpapers*
+
+for_window [class="Toplevel"] border pixel 0
+for_window [class="Toplevel"] resize set 600 700
+
+#########################
+## WINDOW KEY BINDINGS ##
+#########################
+
+# switch windows back and forth
+bindsym $mod+Tab workspace back_and_forth
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# Change gaps
+bindsym $mod+Shift+z gaps outer current plus 5; gaps inner current plus 5
+bindsym $mod+Shift+x gaps outer current minus 5; gaps inner current minus 5
+
+# Move window
+bindsym $mod+Shift+Left move left 30
+bindsym $mod+Shift+Down move down 30
+bindsym $mod+Shift+Up move up 30
+bindsym $mod+Shift+Right move right 30
+
+# Resize window
+bindsym $mod+Shift+h resize shrink width
+bindsym $mod+Shift+j resize shrink height
+bindsym $mod+Shift+k resize grow height
+bindsym $mod+Shift+l resize grow width
+bindsym $mod+z resize grow height; resize grow width
+bindsym $mod+x resize shrink height; resize shrink width
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+v layout toggle split
+bindsym $mod+Control+v split vertical
+bindsym $mod+Shift+v split horizontal
+bindsym $mod+a layout toggle all
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+p focus parent
+
+# focus the child container
+bindsym $mod+c focus child
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# Switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# Assign workspaces
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+#############
+## COLOURS ##
+#############
+
+#set $background       #2f343f
+set $background       #000000
+set $active_border    #000000
+set $inactive_border  #2f343f
+set $indicator        #5294f2
+set $text             #f3f4f5
+set $inactive_text    #575757 
+set $notification     #e53935
+
+# Window colours
+#                       Border           Background       Text            Indicator
+client.focused          $active_border   $active_border   $text           $indicator
+client.unfocused        $inactive_border $inactive_border $inactive_text  $inactive_border
+client.focused_inactive $inactive_border $inactive_border $inactive_text  $inactive_border
+client.urgent           $notification    $notification    $text           $notification
+
+bar {
+        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+	position top
+	strip_workspace_numbers yes
+	font pango: inconsolata 9
+
+        colors{
+               background $background
+               separator  $indicator
+               #                  Border         Background    Text
+               focused_workspace  $background    $background   $text
+               inactive_workspace $background    $background   $inactive_text
+               urgent_workspace   $notification  $notification $text
+        }
+}
+
+###############
+### BORDERS ###
+###############
+
+gaps outer 0
+gaps inner 0
+for_window [class="^.*"] border pixel 2
+
+#######################
+## START-UP PROGRAMS ##
+#######################
+
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# WALLPAPER / EFFECTS
+exec --no-startup-id feh --randomize --bg-scale ~/Pictures/Wallpapers/*
+exec --no-startup-id picom -f
+
+# SCRATCHPADS
+exec --no-startup-id $term --name=dropdown
+exec --no-startup-id $term --name=math -e python\ -q
+
+#############
+### Audio ###
+#############
+
+# Pulse Audio mechanical buttons config
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+ && pkill -RTMIN+10 i3blocks && pkill -RTMIN+11 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%- && pkill -RTMIN+10 i3blocks && pkill -RTMIN+11 i3blocks
+bindsym XF86AudioMute exec --no-startup-id amixer sset Master toggle && pkill -RTMIN+10 i3blocks && pkill -RTMIN+11 i3blocks
+
+###############
+### Display ###
+###############
+
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 15 && pkill -RTMIN+10 i3blocks && pkill -RTMIN+11 i3blocks
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 15 && pkill -RTMIN+10 i3blocks && pkill -RTMIN+11 i3blocks
+
+########
+# MISC #
+########
+workspace_auto_back_and_forth yes
