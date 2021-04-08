@@ -73,7 +73,5 @@ termite                | Terminal emulator
 ttf-font-awesome       | Iconic font designed for Bootstrap
 ttf-inconsolata        | Monospace font for pretty code listings and for the terminal
 tlp                    | Linux Advanced Power Management
-vim                    | Vi Improved, a highly configurable, improved version of the vi text editor
 xf86-input-libinput    | Generic input driver for the X.Org server based on libinput
 xorg-xinit             | X.Org initialisation program
-zsh                    | A very advanced and programmable command interpreter (shell) for UNIX
