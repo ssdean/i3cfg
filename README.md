@@ -74,4 +74,5 @@ ttf-font-awesome       | Iconic font designed for Bootstrap
 ttf-inconsolata        | Monospace font for pretty code listings and for the terminal
 tlp                    | Linux Advanced Power Management
 xf86-input-libinput    | Generic input driver for the X.Org server based on libinput
+xorg-xbacklight        | RandR-based backlight control application, with brightness represented as an integer
 xorg-xinit             | X.Org initialisation program
