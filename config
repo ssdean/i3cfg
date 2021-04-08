@@ -22,19 +22,25 @@ set $term        termite
 
 # Pop up windows are started upon boot, see "START-UP PROGRAMS" below.
 
+# Scratchpad dimensions
+set $scratchpad_width     1890 
+set $scratchpad_height    550 
+set $scratchpad_xposition 15px 
+set $scratchpad_yposition 20px
+
 # Dropdown terminal - $mod+u #
 for_window [instance="dropdown"] floating enable
-for_window [instance="dropdown"] resize set 750 550
+for_window [instance="dropdown"] resize set $scratchpad_width $scratchpad_height
 for_window [instance="dropdown"] move scratchpad
 for_window [instance="dropdown"] border pixel 3
-bindsym $mod+u [instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
+bindsym $mod+u [instance="dropdown"] scratchpad show; [instance="dropdown"] move position $scratchpad_xposition $scratchpad_yposition
 
 # Math teminal (python shell) - $mod+i #
 for_window [instance="math"] floating enable
-for_window [instance="math"] resize set 1000 500
+for_window [instance="math"] resize set $scratchpad_width $scratchpad_height
 for_window [instance="math"] move scratchpad
 for_window [instance="math"] border pixel 3
-bindsym $mod+i [instance="math"] scratchpad show; [instance="math"] move position center
+bindsym $mod+i [instance="math"] scratchpad show; [instance="math"] move position $scratchpad_xposition $scratchpad_yposition
 
 ##########################
 ## PROGRAM KEY BINDINGS ##
@@ -189,7 +195,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 ## COLOURS ##
 #############
 
-#set $background       #2f343f
+#set $background      #2f343f
 set $background       #000000
 set $active_border    #000000
 set $inactive_border  #2f343f
@@ -239,7 +245,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # WALLPAPER / EFFECTS
 exec --no-startup-id feh --randomize --bg-scale ~/Pictures/Wallpapers/*
-exec --no-startup-id picom -f
+exec --no-startup-id picom -f -i 0.96 -m 0.96 --active-opacity 1
 
 # SCRATCHPADS
 exec --no-startup-id $term --name=dropdown
@@ -250,16 +256,16 @@ exec --no-startup-id $term --name=math -e python\ -q
 #############
 
 # Pulse Audio mechanical buttons config
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+ && pkill -RTMIN+10 i3blocks && pkill -RTMIN+11 i3blocks
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%- && pkill -RTMIN+10 i3blocks && pkill -RTMIN+11 i3blocks
-bindsym XF86AudioMute exec --no-startup-id amixer sset Master toggle && pkill -RTMIN+10 i3blocks && pkill -RTMIN+11 i3blocks
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+ && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%- && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec --no-startup-id amixer sset Master toggle && pkill -RTMIN+10 i3blocks
 
 ###############
 ### Display ###
 ###############
 
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 15 && pkill -RTMIN+10 i3blocks && pkill -RTMIN+11 i3blocks
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 15 && pkill -RTMIN+10 i3blocks && pkill -RTMIN+11 i3blocks
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 15 && pkill -RTMIN+10 i3blocks
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 15 && pkill -RTMIN+10 i3blocks
 
 ########
 # MISC #
