@@ -9,7 +9,7 @@
 `echo ".cfg" >> $HOME/.config/i3/.gitignore`
 
 ### Clone into bare repo
-`git clone --bare https://github.com/ssdean/.cfg.git $HOME/.config/i3/.cfg`
+`git clone --bare https://github.com/ssdean/i3cfg.git $HOME/.config/i3/.cfg`
 
 ### Checkout files
 `i3cfg checkout`
