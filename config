@@ -23,17 +23,17 @@ set $term        termite
 # Pop up windows are started upon boot, see "START-UP PROGRAMS" below.
 
 # Scratchpad dimensions
-set $scratchpad_width     1890 
-set $scratchpad_height    550 
-set $scratchpad_xposition 15px 
-set $scratchpad_yposition 20px
+set $scratchpad_width     100ppt 
+set $scratchpad_height    50ppt 
+set $scratchpad_xposition 0ppt 
+set $scratchpad_yposition 2ppt
 
 # Dropdown terminal - $mod+u #
 for_window [instance="dropdown"] floating enable
 for_window [instance="dropdown"] resize set $scratchpad_width $scratchpad_height
 for_window [instance="dropdown"] move scratchpad
 for_window [instance="dropdown"] border pixel 3
-bindsym $mod+u [instance="dropdown"] scratchpad show; [instance="dropdown"] move position $scratchpad_xposition $scratchpad_yposition
+bindsym $mod+F1 [instance="dropdown"] scratchpad show; [instance="dropdown"] move position $scratchpad_xposition $scratchpad_yposition
 
 # Math teminal (python shell) - $mod+i #
 for_window [instance="math"] floating enable
@@ -245,7 +245,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # WALLPAPER / EFFECTS
 exec --no-startup-id feh --randomize --bg-scale ~/Pictures/Wallpapers/*
-exec --no-startup-id picom -f -i 0.96 -m 0.96 --active-opacity 1
+exec --no-startup-id picom -f -i 1 -m 0.96 --inactive-dim 0.2
 
 # SCRATCHPADS
 exec --no-startup-id $term --name=dropdown
