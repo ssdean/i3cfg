@@ -211,20 +211,31 @@ client.unfocused        $inactive_border $inactive_border $inactive_text  $inact
 client.focused_inactive $inactive_border $inactive_border $inactive_text  $inactive_border
 client.urgent           $notification    $notification    $text           $notification
 
-bar {
-        status_command i3blocks -c ~/.config/i3/i3blocks.conf
-	position top
-	strip_workspace_numbers yes
-	font pango: inconsolata 9
+###########
+### BAR ###
+###########
 
-        colors{
-               background $background
-               separator  $indicator
-               #                  Border         Background    Text
-               focused_workspace  $background    $background   $text
-               inactive_workspace $background    $background   $inactive_text
-               urgent_workspace   $notification  $notification $text
-        }
+# Hide/show status bar
+bindsym $mod+y bar mode toggle
+
+bar {
+    status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    mode dock
+    hidden_state hide
+    modifier none
+    position top
+    strip_workspace_numbers yes
+    font pango: inconsolata 9
+    
+
+    colors {
+        background $background
+        separator  $indicator
+        #                  Border         Background    Text
+        focused_workspace  $background    $background   $text
+        inactive_workspace $background    $background   $inactive_text
+        urgent_workspace   $notification  $notification $text
+    }
 }
 
 ###############
