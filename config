@@ -11,10 +11,10 @@ floating_modifier $mod
 ## DEFAULT PROGRAMS ##
 ######################
 
-set $browser     firefox
+set $browser     brave
 set $editor      code
 set $filemanager nautilus
-set $term        termite
+set $term        alacritty
 
 ####################
 ## POP UP WINDOWS ##
@@ -23,24 +23,24 @@ set $term        termite
 # Pop up windows are started upon boot, see "START-UP PROGRAMS" below.
 
 # Scratchpad dimensions
-set $scratchpad_width     100ppt 
+set $scratchpad_width     98ppt 
 set $scratchpad_height    50ppt 
-set $scratchpad_xposition 0ppt 
-set $scratchpad_yposition 2ppt
+set $scratchpad_xposition 1ppt 
+set $scratchpad_yposition 0ppt
 
 # Dropdown terminal - $mod+u #
-for_window [instance="dropdown"] floating enable
-for_window [instance="dropdown"] resize set $scratchpad_width $scratchpad_height
-for_window [instance="dropdown"] move scratchpad
-for_window [instance="dropdown"] border pixel 3
-bindsym $mod+F1 [instance="dropdown"] scratchpad show; [instance="dropdown"] move position $scratchpad_xposition $scratchpad_yposition
+for_window [class="dropdown"]      floating enable
+for_window [class="dropdown"]      resize set $scratchpad_width $scratchpad_height
+for_window [class="dropdown"]      move scratchpad
+for_window [class="dropdown"]      border pixel 3
+bindsym $mod+F1 [class="dropdown"] scratchpad show; [class="dropdown"] move position $scratchpad_xposition $scratchpad_yposition
 
 # Math teminal (python shell) - $mod+i #
-for_window [instance="math"] floating enable
-for_window [instance="math"] resize set $scratchpad_width $scratchpad_height
-for_window [instance="math"] move scratchpad
-for_window [instance="math"] border pixel 3
-bindsym $mod+i [instance="math"] scratchpad show; [instance="math"] move position $scratchpad_xposition $scratchpad_yposition
+for_window [class="math"] floating enable
+for_window [class="math"] resize set $scratchpad_width $scratchpad_height
+for_window [class="math"] move scratchpad
+for_window [class="math"] border pixel 3
+bindsym $mod+i [class="math"] scratchpad show; [class="math"] move position $scratchpad_xposition $scratchpad_yposition
 
 ##########################
 ## PROGRAM KEY BINDINGS ##
@@ -65,7 +65,7 @@ bindsym $mod+r exec --no-startup-id $term -e ranger
 bindsym $mod+Shift+Insert exec $(shutdown -r now)
 
 # Terminal
-bindsym $mod+Return exec --no-startup-id $term --name=Terminal
+bindsym $mod+Return exec --no-startup-id $term
 
 # Screenshot
 bindsym $mod+Shift+s exec --no-startup-id maim --select ~/Pictures/Screenshots/$(date "+%d-%m-%Y_%T").png
@@ -86,10 +86,10 @@ for_window [class="Toplevel"] resize set 600 700
 ## WINDOW KEY BINDINGS ##
 #########################
 
-# switch windows back and forth
+# Switch workspace back and forth
 bindsym $mod+Tab workspace back_and_forth
 
-# kill focused window
+# Kill focused window
 bindsym $mod+Shift+q kill
 
 # Change gaps
@@ -97,18 +97,18 @@ bindsym $mod+Shift+z gaps outer current plus 5; gaps inner current plus 5
 bindsym $mod+Shift+x gaps outer current minus 5; gaps inner current minus 5
 
 # Move window
-bindsym $mod+Shift+Left move left 30
-bindsym $mod+Shift+Down move down 30
-bindsym $mod+Shift+Up move up 30
+bindsym $mod+Shift+Left  move left  30
+bindsym $mod+Shift+Down  move down  30
+bindsym $mod+Shift+Up    move up    30
 bindsym $mod+Shift+Right move right 30
 
 # Resize window
 bindsym $mod+Shift+h resize shrink width
 bindsym $mod+Shift+j resize shrink height
-bindsym $mod+Shift+k resize grow height
-bindsym $mod+Shift+l resize grow width
-bindsym $mod+z resize grow height; resize grow width
-bindsym $mod+x resize shrink height; resize shrink width
+bindsym $mod+Shift+k resize grow   height
+bindsym $mod+Shift+l resize grow   width
+bindsym $mod+z       resize grow   height; resize grow width
+bindsym $mod+x       resize shrink height; resize shrink width
 
 # change focus
 bindsym $mod+h focus left
@@ -117,21 +117,21 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # alternatively, you can use
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
 bindsym $mod+Right focus right
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+v layout toggle split
-bindsym $mod+Control+v split vertical
-bindsym $mod+Shift+v split horizontal
-bindsym $mod+a layout toggle all
+bindsym $mod+s         layout stacking
+bindsym $mod+w         layout tabbed
+bindsym $mod+v         layout toggle split
+bindsym $mod+Control+v split  vertical
+bindsym $mod+Shift+v   split  horizontal
+bindsym $mod+a         layout toggle all
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -259,23 +259,23 @@ exec --no-startup-id feh --randomize --bg-scale ~/Pictures/Wallpapers/*
 exec --no-startup-id picom -f -i 1 -m 0.96 --inactive-dim 0.2
 
 # SCRATCHPADS
-exec --no-startup-id $term --name=dropdown
-exec --no-startup-id $term --name=math -e python\ -q
+exec --no-startup-id $term --class $term,dropdown
+exec --no-startup-id $term --class $term,math -e python -q
 
 #############
 ### Audio ###
 #############
 
 # Pulse Audio mechanical buttons config
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+ && pkill -RTMIN+10 i3blocks
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%- && pkill -RTMIN+10 i3blocks
-bindsym XF86AudioMute exec --no-startup-id amixer sset Master toggle && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+ && pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%- && pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioMute        exec --no-startup-id amixer sset Master toggle && pkill -SIGRTMIN+10 i3blocks
 
 ###############
 ### Display ###
 ###############
 
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 15 && pkill -RTMIN+10 i3blocks
+bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 15 && pkill -RTMIN+10 i3blocks
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 15 && pkill -RTMIN+10 i3blocks
 
 ########
