@@ -198,11 +198,11 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 #############
 
 #set $background      #2f343f
-set $background       #000000
-set $active_border    #000000
-set $inactive_border  #2f343f
+set $background       #0f0f0f
+set $active_border    #242424
+set $inactive_border  #121212
 set $indicator        #5294f2
-set $text             #f3f4f5
+set $text             #dbdbdb
 set $inactive_text    #575757 
 set $notification     #e53935
 
