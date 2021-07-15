@@ -1,3 +1,4 @@
+# Super key modifier
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -11,7 +12,7 @@ floating_modifier $mod
 ## DEFAULT PROGRAMS ##
 ######################
 
-set $browser     brave
+set $browser     brave-beta
 set $editor      code
 set $filemanager nautilus
 set $term        alacritty
@@ -94,7 +95,7 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+Shift+q kill
 
 # Change gaps
-bindsym $mod+Shift+z gaps outer current plus 5; gaps inner current plus 5
+bindsym $mod+Shift+z gaps outer current plus  5; gaps inner current plus  5
 bindsym $mod+Shift+x gaps outer current minus 5; gaps inner current minus 5
 
 # Move window
@@ -226,8 +227,7 @@ bar {
     modifier none
     position top
     strip_workspace_numbers yes
-    font pango: inconsolata 9
-    
+    font pango: Inconsolata, Bold 11
 
     colors {
         background $background
@@ -257,7 +257,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # WALLPAPER / EFFECTS
 exec --no-startup-id feh --randomize --bg-scale ~/Pictures/Wallpapers/*
-exec --no-startup-id picom -f -i 1 -m 0.96 --inactive-dim 0.2
+exec --no-startup-id picom -f -i 1 -m 0.96 --inactive-dim 0.2 -I 0.08 -O 0.08
 
 # SCRATCHPADS
 exec --no-startup-id $term --class $term_class,dropdown
