@@ -3,14 +3,14 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Cantarell Regular 12
+font pango:Inconsolata Bold 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-######################
-## DEFAULT PROGRAMS ##
-######################
+########################
+### DEFAULT PROGRAMS ###
+########################
 
 set $browser     brave-beta
 set $editor      code
@@ -18,9 +18,9 @@ set $filemanager nautilus
 set $term        alacritty
 set $term_class  Alacritty
 
-####################
-## POP UP WINDOWS ##
-####################
+######################
+### POP UP WINDOWS ###
+######################
 
 # Pop up windows are started upon boot, see "START-UP PROGRAMS" below.
 
@@ -44,9 +44,9 @@ for_window [class="math"] move scratchpad
 for_window [class="math"] border pixel 3
 bindsym $mod+i [class="math"] scratchpad show; [class="math"] move position $scratchpad_xposition $scratchpad_yposition
 
-##########################
-## PROGRAM KEY BINDINGS ##
-##########################
+############################
+### PROGRAM KEY BINDINGS ###
+############################
 
 # Browser
 bindsym $mod+b exec --no-startup-id $browser
@@ -84,9 +84,9 @@ bindsym $mod+Shift+b exec --no-startup-id feh --randomize --bg-scale ~/Pictures/
 for_window [class="Toplevel"] border pixel 0
 for_window [class="Toplevel"] resize set 600 700
 
-#########################
-## WINDOW KEY BINDINGS ##
-#########################
+###########################
+### WINDOW KEY BINDINGS ###
+###########################
 
 # Switch workspace back and forth
 bindsym $mod+Tab workspace back_and_forth
@@ -193,9 +193,9 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-#############
-## COLOURS ##
-#############
+###############
+### COLOURS ###
+###############
 
 #set $background      #2f343f
 set $background       #0f0f0f
@@ -247,9 +247,9 @@ gaps outer 0
 gaps inner 0
 for_window [class="^.*"] border pixel 2
 
-#######################
-## START-UP PROGRAMS ##
-#######################
+#########################
+### START-UP PROGRAMS ###
+#########################
 
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
@@ -264,7 +264,7 @@ exec --no-startup-id $term --class $term_class,dropdown
 exec --no-startup-id $term --class $term_class,math -e python -q
 
 #############
-### Audio ###
+### AUDIO ###
 #############
 
 # Pulse Audio mechanical buttons config
@@ -273,13 +273,13 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%- && pkil
 bindsym XF86AudioMute        exec --no-startup-id amixer sset Master toggle && pkill -SIGRTMIN+10 i3blocks
 
 ###############
-### Display ###
+### DISPLAY ###
 ###############
 
 bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 15 && pkill -RTMIN+10 i3blocks
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 15 && pkill -RTMIN+10 i3blocks
 
-########
-# MISC #
-########
+############
+### MISC ###
+############
 workspace_auto_back_and_forth yes
