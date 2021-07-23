@@ -3,7 +3,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Inconsolata Bold 12
+font pango:Inconsolata Bold, Symbols Nerd Font 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -63,17 +63,11 @@ bindsym $mod+Shift+Return exec --no-startup-id $filemanager
 # Ranger
 bindsym $mod+r exec --no-startup-id $term -e ranger
 
-# Restart
-bindsym $mod+Shift+Insert exec $(shutdown -r now)
-
 # Terminal
 bindsym $mod+Return exec --no-startup-id $term
 
 # Screenshot
 bindsym $mod+Shift+s exec --no-startup-id maim --select ~/Pictures/Screenshots/$(date "+%d-%m-%Y_%T").png
-
-# Shutdown
-bindsym $mod+Shift+Delete exec $(shutdown -h now)
 
 # Virt-viewer
 bindsym $mod+m exec --no-startup-id virt-viewer
@@ -87,9 +81,6 @@ for_window [class="Toplevel"] resize set 600 700
 ###########################
 ### WINDOW KEY BINDINGS ###
 ###########################
-
-# Switch workspace back and forth
-bindsym $mod+Tab workspace back_and_forth
 
 # Kill focused window
 bindsym $mod+Shift+q kill
@@ -172,7 +163,12 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
-# Assign workspaces
+# Next/Previous workspace
+bindsym Control+Mod1+Right workspace next
+bindsym Control+Mod1+Left  workspace prev
+
+# Switch workspace back and forth
+bindsym $mod+Tab workspace back_and_forth
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -192,6 +188,10 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# Shutdown
+bindsym $mod+Shift+Delete exec "i3-nagbar -t warning -m 'Do you really want to shutdown?' -b 'Shutdown' 'exec $(shutdown -h now)'"
+# Restart
+bindsym $mod+Shift+Insert exec "i3-nagbar -t warning -m 'Do you really want to restart?' -b 'Restart' 'exec $(shutdown -r now)'"
 
 ###############
 ### COLOURS ###
@@ -222,6 +222,7 @@ bindsym $mod+y bar mode toggle
 
 bar {
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    #i3bar_command i3bar --transparency
     mode dock
     hidden_state hide
     modifier none
@@ -256,7 +257,8 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # WALLPAPER / EFFECTS
-exec --no-startup-id feh --randomize --bg-scale ~/Pictures/Wallpapers/*
+#exec --no-startup-id feh --randomize --bg-scale ~/Pictures/Wallpapers/*
+exec --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/f5fkwnfij5j51.png
 exec --no-startup-id picom -f -i 1 -m 0.96 --inactive-dim 0.2 -I 0.08 -O 0.08
 
 # SCRATCHPADS
