@@ -5,11 +5,11 @@
 ### Create alias
 `alias i3cfg='/usr/bin/git --git-dir=$HOME/.config/i3/.i3cfg/ --work-tree=$HOME/.config/i3/'`
 
-### Ignore source directory
-`echo ".i3cfg" >> $HOME/.config/i3/.gitignore`
-
 ### Clone into bare repo
 `git clone --bare https://github.com/ssdean/i3cfg.git $HOME/.config/i3/.i3cfg`
+
+### Ignore source directory
+`echo ".i3cfg" >> $HOME/.config/i3/.gitignore`
 
 ### Checkout files
 `i3cfg checkout`
