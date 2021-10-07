@@ -12,9 +12,9 @@ floating_modifier $mod
 ### DEFAULT PROGRAMS ###
 ########################
 
-set $browser     brave-beta
+set $browser     firefox
 set $editor      code
-set $filemanager nautilus
+set $filemanager nemo
 set $term        alacritty
 set $term_class  Alacritty
 
@@ -35,7 +35,7 @@ for_window [class="dropdown"]      floating enable
 for_window [class="dropdown"]      resize set $scratchpad_width $scratchpad_height
 for_window [class="dropdown"]      move scratchpad
 for_window [class="dropdown"]      border pixel 3
-bindsym $mod+F1 [class="dropdown"] scratchpad show; [class="dropdown"] move position $scratchpad_xposition $scratchpad_yposition
+bindsym $mod+u [class="dropdown"] scratchpad show; [class="dropdown"] move position $scratchpad_xposition $scratchpad_yposition
 
 # Math teminal (python shell) - $mod+i #
 for_window [class="math"] floating enable
@@ -84,6 +84,9 @@ for_window [class="Toplevel"] resize set 600 700
 
 # Kill focused window
 bindsym $mod+Shift+q kill
+
+# Kill all windows in active workspace
+bindsym $mod+Shift+Control+q [workspace="__focused__"] kill
 
 # Change gaps
 bindsym $mod+Shift+z gaps outer current plus  5; gaps inner current plus  5
@@ -258,7 +261,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # WALLPAPER / EFFECTS
 #exec --no-startup-id feh --randomize --bg-scale ~/Pictures/Wallpapers/*
-exec --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/f5fkwnfij5j51.png
+exec --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/beiheng-guo-IAVVv6z3D6g-unsplash.jpg
 exec --no-startup-id picom -f -i 1 -m 0.96 --inactive-dim 0.2 -I 0.08 -O 0.08
 
 # SCRATCHPADS
