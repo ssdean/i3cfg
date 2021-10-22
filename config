@@ -200,7 +200,6 @@ bindsym $mod+Shift+Insert exec "i3-nagbar -t warning -m 'Do you really want to r
 ### COLOURS ###
 ###############
 
-#set $background      #2f343f
 set $background       #0f0f0f
 set $active_border    #242424
 set $inactive_border  #121212
@@ -262,11 +261,11 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # WALLPAPER / EFFECTS
 #exec --no-startup-id feh --randomize --bg-scale ~/Pictures/Wallpapers/*
 exec --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/beiheng-guo-IAVVv6z3D6g-unsplash.jpg
-exec --no-startup-id picom -f -i 1 -m 0.96 --inactive-dim 0.2 -I 0.08 -O 0.08
+exec --no-startup-id picom -f -i 1 -m 0.96 --inactive-dim 0.02 -I 0.06 -O 0.04
 
 # SCRATCHPADS
 exec --no-startup-id $term --class $term_class,dropdown
-exec --no-startup-id $term --class $term_class,math -e python -q
+#exec --no-startup-id $term --class $term_class,math -e python -q
 
 #############
 ### AUDIO ###
