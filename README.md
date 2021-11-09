@@ -3,7 +3,7 @@
 ## How to clone
 
 ### Create alias
-`alias i3cfg='/usr/bin/git --git-dir=$HOME/.config/i3/.i3cfg/ --work-tree=$HOME/.config/i3/'`
+`alias i3cfg='/usr/bin/git --git-dir=$HOME/.config/i3/.i3cfg/ --work-tree=$HOME'`
 
 ### Clone into bare repo
 `git clone --bare https://github.com/ssdean/i3cfg.git $HOME/.config/i3/.i3cfg`
@@ -51,6 +51,7 @@ picom                  | X compositor that may fix tearing issues (Replaces Comp
 polkit-gnome           | Legacy polkit authentication agent for GNOME
 pulseaudio-alsa        | ALSA Configuration for PulseAudio
 ranger                 | Simple, vim-like file manager
+rofi                    | A window switcher, application launcher and dmenu replacement
 ttf-font-awesome       | Iconic font designed for Bootstrap
 ttf-inconsolata        | Monospace font for pretty code listings and for the terminal
 
