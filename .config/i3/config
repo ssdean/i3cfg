@@ -55,10 +55,10 @@ bindsym $mod+b exec $browser
 bindsym $mod+e exec $editor
 
 # Dmenu
-# bindsym $mod+d exec --no-startup-id dmenu_run -i -l 5 -fn 'Cantarell Regular:pixelsize=16' -nb '#000000' -nf '#575757' -sb '#000000' -sf '#ffffff'
+bindsym $mod+d exec --no-startup-id dmenu_run -i -l 5 -fn 'Cantarell Regular:pixelsize=16' -nb '#000000' -nf '#575757' -sb '#000000' -sf '#ffffff'
 
 # Rofi
-bindsym $mod+d exec --no-startup-id rofi -i -show drun -modi drun -show-icons
+# bindsym $mod+d exec --no-startup-id rofi -i -show drun -modi drun -show-icons
 
 # Rofi
 #bindsym $mod+d exec --no-startup-id rofi -i -show drun -modi drun -show-icons
@@ -95,8 +95,8 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+Control+q [workspace="__focused__"] kill
 
 # Change gaps
-bindsym $mod+Shift+z gaps outer current plus  5; gaps inner current plus  5
-bindsym $mod+Shift+x gaps outer current minus 5; gaps inner current minus 5
+# bindsym $mod+Shift+z gaps outer current plus  5; gaps inner current plus  5
+# bindsym $mod+Shift+x gaps outer current minus 5; gaps inner current minus 5
 
 # Move window
 bindsym $mod+Shift+Left  move left  30
@@ -105,10 +105,10 @@ bindsym $mod+Shift+Up    move up    30
 bindsym $mod+Shift+Right move right 30
 
 # Resize window
-bindsym $mod+Shift+h resize shrink width
-bindsym $mod+Shift+j resize shrink height
-bindsym $mod+Shift+k resize grow   height
-bindsym $mod+Shift+l resize grow   width
+bindsym $mod+Shift+h move left 30
+bindsym $mod+Shift+j move down 30
+bindsym $mod+Shift+k move up 30
+bindsym $mod+Shift+l move right 30
 bindsym $mod+z       resize grow   height; resize grow width
 bindsym $mod+x       resize shrink height; resize shrink width
 
@@ -230,7 +230,8 @@ client.urgent           $notification    $notification    $text           $notif
 bindsym $mod+y bar mode toggle
 
 bar {
-    status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    status_command i3status -c ~/.config/i3/i3status.conf
+    #status_command i3blocks -c ~/.config/i3/i3blocks.conf
     #i3bar_command i3bar --transparency
     mode dock
     hidden_state hide
@@ -253,8 +254,8 @@ bar {
 ### BORDERS ###
 ###############
 
-gaps outer 0
-gaps inner 0
+# gaps outer 0
+# gaps inner 0
 for_window [class="^.*"] border pixel 2
 
 #########################
@@ -267,12 +268,13 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # WALLPAPER / EFFECTS
 #exec --no-startup-id feh --randomize --bg-scale ~/Pictures/Wallpapers/*
-exec --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/beiheng-guo-IAVVv6z3D6g-unsplash.jpg
+#exec --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/beiheng-guo-IAVVv6z3D6g-unsplash.jpg
+exec --no-startup-id feh --bg-scale ~/Pictures/libadwaita-d.jpg
 exec --no-startup-id picom -f -i 1 -m 0.96 --inactive-dim 0.02 -I 0.06 -O 0.04
 
 # SCRATCHPADS
 exec --no-startup-id $term --class $term_class,dropdown
-#exec --no-startup-id $term --class $term_class,math -e python -q
+exec --no-startup-id $term --class $term_class,math -e python -q
 
 #############
 ### AUDIO ###
