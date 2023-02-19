@@ -3,7 +3,8 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Inconsolata Bold, Symbols Nerd Font 12
+font pango:Cantarell Regular, Symbols Nerd Font 12
+#font pango:Inconsolata Bold, Symbols Nerd Font 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -22,7 +23,7 @@ set $term_class  Alacritty
 ### POP UP WINDOWS ###
 ######################
 
-# Pop up windows are started upon boot, see "START-UP PROGRAMS" below.
+# Pop up windows are started upon boot, see "START-UP PROGRAMS".
 
 # Scratchpad dimensions
 set $scratchpad_width     98ppt 
@@ -44,6 +45,9 @@ for_window [class="math"] move scratchpad
 for_window [class="math"] border pixel 3
 bindsym $mod+i [class="math"] scratchpad show; [class="math"] move position $scratchpad_xposition $scratchpad_yposition
 
+#for_window [class="Toplevel"] border pixel 0
+#for_window [class="Toplevel"] resize set 600 700
+
 ############################
 ### PROGRAM KEY BINDINGS ###
 ############################
@@ -52,16 +56,13 @@ bindsym $mod+i [class="math"] scratchpad show; [class="math"] move position $scr
 bindsym $mod+b exec $browser
 
 # Editor
-bindsym $mod+e exec $editor
+bindsym $mod+e exec --no-startup-id $editor
 
 # Dmenu
-bindsym $mod+d exec --no-startup-id dmenu_run -i -l 5 -fn 'Cantarell Regular:pixelsize=16' -nb '#000000' -nf '#575757' -sb '#000000' -sf '#ffffff'
+# bindsym $mod+d exec --no-startup-id dmenu_run -i -l 5 -fn 'Cantarell Regular:pixelsize=16' -nb '#000000' -nf '#575757' -sb '#000000' -sf '#ffffff'
 
 # Rofi
-# bindsym $mod+d exec --no-startup-id rofi -i -show drun -modi drun -show-icons
-
-# Rofi
-#bindsym $mod+d exec --no-startup-id rofi -i -show drun -modi drun -show-icons
+bindsym $mod+d exec --no-startup-id rofi -i -show drun -modi drun -show-icons
 
 # File Manager
 bindsym $mod+Shift+Return exec $filemanager
@@ -70,7 +71,7 @@ bindsym $mod+Shift+Return exec $filemanager
 bindsym $mod+r exec $term -e ranger
 
 # Terminal
-bindsym $mod+Return exec $term
+bindsym $mod+Return exec --no-startup-id $term
 
 # Screenshot
 bindsym $mod+Shift+s exec --no-startup-id maim --select ~/Pictures/Screenshots/$(date "+%d-%m-%Y_%T").png
@@ -80,9 +81,6 @@ bindsym $mod+m exec virt-viewer
 
 # Randomly cycle wallpaper
 bindsym $mod+Shift+b exec --no-startup-id feh --randomize --bg-scale ~/Pictures/Wallpapers*
-
-for_window [class="Toplevel"] border pixel 0
-for_window [class="Toplevel"] resize set 600 700
 
 ###########################
 ### WINDOW KEY BINDINGS ###
@@ -209,7 +207,6 @@ bindsym $mod+Shift+Insert exec "i3-nagbar -t warning -m 'Do you really want to r
 set $background       #0f0f0f
 set $active_border    #242424
 set $inactive_border  #121212
-#set $indicator        #5294f2
 set $indicator        #526ff6
 set $text             #dbdbdb
 set $inactive_text    #575757 
@@ -238,7 +235,8 @@ bar {
     modifier none
     position top
     strip_workspace_numbers yes
-    font pango: Inconsolata, Bold 11
+    #font pango: Inconsolata, Bold 11
+    font pango: Cantarell, Bold 10
 
     colors {
         background $background
@@ -268,9 +266,8 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # WALLPAPER / EFFECTS
 #exec --no-startup-id feh --randomize --bg-scale ~/Pictures/Wallpapers/*
-#exec --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/beiheng-guo-IAVVv6z3D6g-unsplash.jpg
 exec --no-startup-id feh --bg-scale ~/Pictures/libadwaita-d.jpg
-exec --no-startup-id picom -f -i 1 -m 0.96 --inactive-dim 0.02 -I 0.06 -O 0.04
+exec --no-startup-id picom -f -i 1 -m 0.96 --inactive-dim 0.00 -I 0.06 -O 0.04
 
 # SCRATCHPADS
 exec --no-startup-id $term --class $term_class,dropdown
