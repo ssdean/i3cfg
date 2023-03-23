@@ -26,7 +26,7 @@ set $term_class  Alacritty
 # Pop up windows are started upon boot, see "START-UP PROGRAMS".
 
 # Scratchpad dimensions
-set $scratchpad_width     98ppt 
+set $scratchpad_width     60ppt 
 set $scratchpad_height    50ppt 
 set $scratchpad_xposition 1ppt 
 set $scratchpad_yposition 0ppt
@@ -36,14 +36,14 @@ for_window [class="dropdown"]      floating enable
 for_window [class="dropdown"]      resize set $scratchpad_width $scratchpad_height
 for_window [class="dropdown"]      move scratchpad
 for_window [class="dropdown"]      border pixel 3
-bindsym $mod+u [class="dropdown"] scratchpad show; [class="dropdown"] move position $scratchpad_xposition $scratchpad_yposition
+bindsym $mod+u [class="dropdown"] scratchpad show; [class="dropdown"] move position center
 
 # Math teminal (python shell) - $mod+i #
 for_window [class="math"] floating enable
 for_window [class="math"] resize set $scratchpad_width $scratchpad_height
 for_window [class="math"] move scratchpad
 for_window [class="math"] border pixel 3
-bindsym $mod+i [class="math"] scratchpad show; [class="math"] move position $scratchpad_xposition $scratchpad_yposition
+bindsym $mod+i [class="math"] scratchpad show; [class="math"] move position center
 
 #for_window [class="Toplevel"] border pixel 0
 #for_window [class="Toplevel"] resize set 600 700
@@ -270,8 +270,8 @@ exec --no-startup-id feh --bg-scale ~/Pictures/libadwaita-d.jpg
 exec --no-startup-id picom -f -i 1 -m 0.96 --inactive-dim 0.00 -I 0.06 -O 0.04
 
 # SCRATCHPADS
-exec --no-startup-id $term --class $term_class,dropdown
-exec --no-startup-id $term --class $term_class,math -e python -q
+exec --no-startup-id $term --class dropdown,dropdown
+exec --no-startup-id $term --class math,math -e python -q
 
 #############
 ### AUDIO ###
