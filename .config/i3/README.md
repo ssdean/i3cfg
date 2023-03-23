@@ -5,6 +5,10 @@
 ### Create alias
 `alias i3cfg='/usr/bin/git --git-dir=$HOME/.config/i3/.i3cfg/ --work-tree=$HOME/.config/i3/'`
 
+### Navigate to config directory
+
+`cd .config/i3` Create if this does not exist.
+
 ### Clone into bare repo
 `git clone --bare https://github.com/ssdean/i3cfg.git $HOME/.config/i3/.i3cfg`
 

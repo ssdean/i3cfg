@@ -59,10 +59,10 @@ bindsym $mod+b exec $browser
 bindsym $mod+e exec --no-startup-id $editor
 
 # Dmenu
-# bindsym $mod+d exec --no-startup-id dmenu_run -i -l 5 -fn 'Cantarell Regular:pixelsize=16' -nb '#000000' -nf '#575757' -sb '#000000' -sf '#ffffff'
+bindsym $mod+d exec --no-startup-id dmenu_run -i -l 5 -fn 'Cantarell Regular:pixelsize=16' -nb '#000000' -nf '#575757' -sb '#000000' -sf '#ffffff'
 
 # Rofi
-bindsym $mod+d exec --no-startup-id rofi -i -show drun -modi drun -show-icons
+#bindsym $mod+d exec --no-startup-id rofi -i -show drun -modi drun -show-icons
 
 # File Manager
 bindsym $mod+Shift+Return exec $filemanager
