@@ -58,7 +58,7 @@ bindsym $mod+b exec $browser
 bindsym $mod+e exec --no-startup-id $editor
 
 # Dmenu
-bindsym $mod+d exec --no-startup-id dmenu_run -i -l 5 -fn 'Cantarell Regular:pixelsize=16' -nb '#000000' -nf '#575757' -sb '#000000' -sf '#ffffff'
+bindsym $mod+d exec --no-startup-id dmenu_run -i -b -fn 'Cantarell Regular:pixelsize=16' -nb '#000000' -nf '#575757' -sb '#333333' -sf '#ffffff'
 
 # Rofi
 #bindsym $mod+d exec --no-startup-id rofi -i -show drun -modi drun -show-icons
@@ -94,20 +94,22 @@ bindsym $mod+Shift+Control+q [workspace="__focused__"] kill
 # bindsym $mod+Shift+x gaps outer current minus 5; gaps inner current minus 5
 
 # Move window
+bindsym $mod+Shift+h move left 30
+bindsym $mod+Shift+j move down 30
+bindsym $mod+Shift+k move up 30
+bindsym $mod+Shift+l move right 30
+
+# Alternative move window
 bindsym $mod+Shift+Left  move left  30
 bindsym $mod+Shift+Down  move down  30
 bindsym $mod+Shift+Up    move up    30
 bindsym $mod+Shift+Right move right 30
 
-# Resize window
-bindsym $mod+Shift+h move left 30
-bindsym $mod+Shift+j move down 30
-bindsym $mod+Shift+k move up 30
-bindsym $mod+Shift+l move right 30
-bindsym $mod+z       resize grow   height; resize grow width
-bindsym $mod+x       resize shrink height; resize shrink width
+# Resize windows
+bindsym $mod+Mod1+k resize grow   height; resize grow width
+bindsym $mod+Mod1+j resize shrink height; resize shrink width
 
-# change focus
+# Change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -126,8 +128,8 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+s         layout stacking
 bindsym $mod+w         layout tabbed
 bindsym $mod+v         layout toggle split
-bindsym $mod+Control+v split  vertical
-bindsym $mod+Shift+v   split  horizontal
+bindsym $mod+Control+j split  vertical
+bindsym $mod+Control+l split  horizontal
 bindsym $mod+a         layout toggle all
 
 # toggle tiling / floating
