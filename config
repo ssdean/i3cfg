@@ -106,8 +106,10 @@ bindsym $mod+Shift+Up    move up    30
 bindsym $mod+Shift+Right move right 30
 
 # Resize windows
-bindsym $mod+Mod1+k resize grow   height; resize grow width
-bindsym $mod+Mod1+j resize shrink height; resize shrink width
+bindsym $mod+Mod1+h resize shrink width
+bindsym $mod+Mod1+j resize shrink height
+bindsym $mod+Mod1+k resize grow   height
+bindsym $mod+Mod1+l resize grow   width
 
 # Change focus
 bindsym $mod+h focus left
