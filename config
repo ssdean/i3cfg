@@ -228,8 +228,8 @@ client.urgent           $notification    $notification    $text           $notif
 bindsym $mod+y bar mode toggle
 
 bar {
-    status_command i3status -c ~/.config/i3/i3status.conf
-    #status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    #tatus_command i3status -c ~/.config/i3/i3status.conf
+    status_command i3blocks -c ~/.config/i3/i3blocks.conf
     #i3bar_command i3bar --transparency
     mode dock
     hidden_state hide
@@ -278,10 +278,15 @@ exec --no-startup-id $term --class math,math -e python -q
 ### AUDIO ###
 #############
 
-# Pulse Audio mechanical buttons config
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+ && pkill -SIGRTMIN+10 i3blocks
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%- && pkill -SIGRTMIN+10 i3blocks
-bindsym XF86AudioMute        exec --no-startup-id amixer sset Master toggle && pkill -SIGRTMIN+10 i3blocks
+# Pipewire keybindings
+bindsym XF86AudioRaiseVolume exec --no-startup-id wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id wpctl set-volume  @DEFAULT_AUDIO_SINK@ 5%- && pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioMute        exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && pkill -SIGRTMIN+10 i3blocks
+
+# Pulseaudio keybindings
+#bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+ && pkill -SIGRTMIN+10 i3blocks
+#bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%- && pkill -SIGRTMIN+10 i3blocks
+#bindsym XF86AudioMute        exec --no-startup-id amixer sset Master toggle && pkill -SIGRTMIN+10 i3blocks
 
 ###############
 ### DISPLAY ###
