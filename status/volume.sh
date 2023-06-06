@@ -1,5 +1,7 @@
-VOLUME_PERCENT=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{ printf("%d", ($2 * 100)) }')
-MUTE=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{ print $3 }')
+WPCTL_STRING=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+IFS=' ' read -ra split <<< $WPCTL_STRING
+VOLUME_PERCENT=$(awk -v var=${split[1]} 'BEGIN { printf("%d", (var * 100)) }')
+MUTE=${split[2]}
 
 if [ -z $MUTE ]; then
     if [ $VOLUME_PERCENT -gt 55 ]; then
@@ -13,4 +15,4 @@ else
     LABEL=
 fi
 
-echo $(awk -v label=$LABEL -v volume=$VOLUME_PERCENT 'BEGIN { printf("%s %d%", label, volume) }')
+echo $(awk -v label=$LABEL -v volume=$VOLUME_PERCENT 'BEGIN { printf("%s %s%", label, volume) }')
